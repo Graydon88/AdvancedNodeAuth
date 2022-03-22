@@ -4,14 +4,32 @@ import { Link } from "react-router-dom";
 import "./RegisterScreen.css";
 
 const RegisterScreen = ({ history }) => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [role, setRole] = useState("");
+    const [org, setOrg] = useState("");
+    const [confirmpassword, setConfirmPassword] = useState("");
+    const [error, setError] = useState("");
 
-  const registerHandler = async (e) => {
-    e.preventDefault();
+    const options = [
+      {
+        label: "Admin",
+        value: "admin"
+      },
+      {
+        label: "User",
+        value: "user"
+      },
+      {
+        label: "Nevada Mining",
+        value: "nevada_mining"
+      },
+    ];
+
+    const registerHandler = async (e) => {
+      console.log(username, email, password, org, role )
+      e.preventDefault();
 
     const config = {
       header: {
@@ -35,10 +53,11 @@ const RegisterScreen = ({ history }) => {
           username,
           email,
           password,
+          role,
+          org
         },
         config
       );
-
       localStorage.setItem("authToken", data.token);
 
       history.push("/");
@@ -75,6 +94,33 @@ const RegisterScreen = ({ history }) => {
             placeholder="Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="role">Role:</label>
+          <select
+            type="text"
+            required
+            id="role"
+            placeholder="Enter Role"
+            className="form-select"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            {options.map((option) =>(
+              <option value={option.value} key={option.value}>{option.label}</option>
+            ))}
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="org">Organization:</label>
+          <input
+            type="text"
+            required
+            id="org"
+            placeholder="Enter Organization"
+            value={org}
+            onChange={(e) => setOrg(e.target.value)}
           />
         </div>
         <div className="form-group">

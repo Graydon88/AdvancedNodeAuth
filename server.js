@@ -4,7 +4,7 @@ const app = express();
 const connectDB = require("./config/db");
 const errorHandler = require("./middleware/error");
 
-connectDB();
+connectDB(); 
 
 app.use(express.json());
 

@@ -17,6 +17,14 @@ const UserSchema = new mongoose.Schema({
       "Please provide a valid email",
     ],
   },
+  role: {
+    type: String,
+    required: [true, "Role must be selected"],
+  },
+  org: {
+    type: String,
+    required: [true, "Please add the user's Organization"],
+  },
   password: {
     type: String,
     required: [true, "Please add a password"],
@@ -57,7 +65,7 @@ UserSchema.methods.getResetPasswordToken = function () {
     .digest("hex");
 
   // Set token expire date
-  this.resetPasswordExpire = Date.now() + 10 * (60 * 1000); // Ten Minutes
+  this.resetPasswordExpire = Date.now() + 60 * (60 * 1000); // Sixty Minutes
 
   return resetToken;
 };

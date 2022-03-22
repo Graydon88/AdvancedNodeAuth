@@ -26,7 +26,7 @@ exports.login = async (req, res, next) => {
     if (!isMatch) {
       return next(new ErrorResponse("Invalid credentials", 401));
     }
-
+    console.log('user is:' ,user)
     sendToken(user, 200, res);
   } catch (err) {
     next(err);
@@ -35,13 +35,15 @@ exports.login = async (req, res, next) => {
 
 // @desc    Register user
 exports.register = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, role, org } = req.body;
 
   try {
     const user = await User.create({
       username,
       email,
       password,
+      role,
+      org
     });
 
     sendToken(user, 200, res);

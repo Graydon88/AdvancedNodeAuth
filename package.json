@@ -1,26 +1,40 @@
 {
   "name": "password_reset",
   "version": "1.0.0",
-  "description": "",
+  "description": "MERN APP for registering users with mongodb and authentication using a JWT (json web token), It includes also a password reset functionality.",
   "main": "server.js",
   "scripts": {
     "server": "nodemon server",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "dotenv": "^8.2.0",
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
+    "formik": "^2.2.9",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.9",
-    "nodemailer": "^6.4.17"
+    "nodemailer": "^6.4.17",
+    "validation": "^0.0.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Graydon88/AdvancedNodeAuth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Graydon88/AdvancedNodeAuth/issues"
+  },
+  "homepage": "https://github.com/Graydon88/AdvancedNodeAuth#readme"
 }
